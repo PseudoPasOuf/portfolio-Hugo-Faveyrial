@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrousel d'images</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .carousel {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+  }
+
+  .slides {
+    display: flex;
+    transition: transform 1s ease;
+    width: 400%;
+  }
+
+  .slide {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .slide img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .thumbnails {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    display: block;
+  }
+
+  .thumbnail.active {
+    border-color: #007bff;
+  }
+
+  /* Keyframes for automatic slide change */
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    20% { transform: translateX(0%); }
+    25% { transform: translateX(-100%); }
+    45% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    70% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    95% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+  }
+
+  .slides {
+    animation: slide 60s infinite;
+  }
+
+  .thumbnails input {
+    display: none;
+  }
+
+  .thumbnails input:checked + label .thumbnail {
+    border-color: #007bff;
+  }
+
+  #thumb1:checked ~ .slides { animation: none; transform: translateX(0%); }
+  #thumb2:checked ~ .slides { animation: none; transform: translateX(-100%); }
+  #thumb3:checked ~ .slides { animation: none; transform: translateX(-200%); }
+  #thumb4:checked ~ .slides { animation: none; transform: translateX(-300%); }
+</style>
+</head>
+<body>
+
+<div class="carousel">
+  <input type="radio" name="thumb" id="thumb1" checked>
+  <input type="radio" name="thumb" id="thumb2">
+  <input type="radio" name="thumb" id="thumb3">
+  <input type="radio" name="thumb" id="thumb4">
+
+  <div class="slides">
+    <div class="slide"><img src="" alt="Image 1"></div>
+    <div class="slide"><img src="" alt="Image 2"></div>
+    <div class="slide"><img src="" alt="Image 3"></div>
+    <div class="slide"><img src="" alt="Image 4"></div>
+  </div>
+
+  <div class="thumbnails">
+    <label for="thumb1" class="thumbnail"><img src="" alt="Image 1"></label>
+    <label for="thumb2" class="thumbnail"><img src="" alt="Image 2"></label>
+    <label for="thumb3" class="thumbnail"><img src="" alt="Image 3"></label>
+    <label for="thumb4" class="thumbnail"><img src="" alt="Image 4"></label>
+  </div>
+</div>
+
+</body>
+</html>
